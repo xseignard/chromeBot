@@ -1,0 +1,17 @@
+{
+  "name": "Chromebot",
+  "version": "1.0",
+  "manifest_version": 2,
+  "minimum_chrome_version": "29",
+  "description": "Chromebot FTW!",
+
+  "app": {
+    "background": {
+      "scripts": [ "js/background.js" ]
+    }
+  },
+
+  "permissions": [
+    "serial"
+  ]
+}
