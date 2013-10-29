@@ -26,7 +26,10 @@ var serial = {
   buildPortPicker: function(ports) {
     var portPicker = $('#port-picker');
     ports.forEach(function(port) {
-      portPicker.append('<option value=' + port + '>' + port + '</option>');
+      // dont handle internal linux ttys
+      if (port.indexOf('ttyS') === -1) {
+        portPicker.append('<option value=' + port + '>' + port + '</option>');
+      }
     });
 
     portPicker.change(function() {

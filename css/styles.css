@@ -23,7 +23,7 @@ label {
   width: 90%;
   margin: 20px auto;
   height: 6px;
-  background: rgb(13, 168, 97);
+  background: #0DA861;
 }
 
 .slider::-webkit-slider-thumb {
@@ -31,12 +31,13 @@ label {
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  background: rgb(67, 135, 253);
+  background: #4387FD;
 }
 
 #chromebot {
   font-size: 24px;
 }
+
 #canvasDiv {
   border-bottom: solid 1px #ddd;
   border-right: solid 1px #ddd;
