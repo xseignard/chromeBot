@@ -11,31 +11,14 @@ label {
   border-bottom: solid 1px #ddd;
   border-right: solid 1px #ddd;
   width: 300px;
-}
-
-label {
   color: #999;
-}
-
-.slider {
-  display: block;
-   -webkit-appearance:none !important;
-  width: 90%;
-  margin: 20px auto;
-  height: 6px;
-  background: #0DA861;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance:none !important;
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
-  background: #4387FD;
 }
 
 #chromebot {
   font-size: 24px;
+}
+#chromebot::before {
+  content: " ";
 }
 
 #canvasDiv {
@@ -49,5 +32,4 @@ label {
   position: absolute;
   top: 0;
   left: 0;
-  width: 640px;
 }

@@ -11,6 +11,12 @@
     }
   },
 
+  "icons": { 
+    "16": "assets/chromebot16.png",
+    "48": "assets/chromebot48.png",
+    "128": "assets/chromebot128.png"
+  },
+
   "permissions": [
     "serial"
   ]

@@ -5,27 +5,17 @@
 </head>
 <body>
   <div id="container">
-    <label id="chromebot">
-      <b>Chromebot!</b>
-    </label>
-
     <label>
-      Gamepad: <span id="gamepad">Press a button to start...</span>
+      <img src="assets/chromebot48.png"><b id="chromebot">Chromebot!</b>
     </label>
 
     <label>
       Serial port: <span id="serialport">Pending...</span><br/>
       <select id="port-picker"></select>
     </label>
-    
-    <label>
-      X axis: <span id="xAxisText">0</span>
-      <input id="xAxis" class="slider" type="range" min="-1000" max="1000" value="0">
-    </label>
 
     <label>
-      Y axis: <span id="yAxisText">0</span>
-      <input id="yAxis" class="slider" type="range" min="-1000" max="1000" value="0">
+      Gamepad: <span id="gamepad">Press a button to start...</span>
     </label>
 
     <div id="canvasDiv"></div>
@@ -34,9 +24,9 @@
   <script src="js/vendor/jquery.min.js"></script>
   <script src="js/vendor/modernizr.gamepad.js"></script>
   <script src="js/vendor/two.min.js"></script>
-  <script src="js/gamepad.js"></script>
-  <script src="js/serial.js"></script>
-  <script src="js/ui.js"></script>
+  <script src="js/chromebot/gamepad.js"></script>
+  <script src="js/chromebot/serial.js"></script>
+  <script src="js/chromebot/ui.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
