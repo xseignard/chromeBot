@@ -1,21 +1,5 @@
 window.onload = function() {
 
-  var ui = new Chromebot.UI();
-  //ui.init();
-  var serial = new Chromebot.Serial();
-
-  var gamepad = new Chromebot.Gamepad({
-    unsupportedAPI : function() {
-      console.log('Unsupported API');
-    },
-    handleEvent : function(gamepad) {
-      var xAxis = gamepad.axes[0];
-      var yAxis = gamepad.axes[1];
-      ui.updateUI(xAxis, yAxis);
-      updateSerial(xAxis, yAxis);
-    }
-  });
-
   var values = [-1,0,1];
   var updateSerial = function(xAxis, yAxis) {
     var msg = 0;
@@ -46,6 +30,20 @@ window.onload = function() {
       serial.send(msg);
     }
   };
+
+  var ui = new Chromebot.UI();
+  var serial = new Chromebot.Serial();
+  var gamepad = new Chromebot.Gamepad({
+    unsupportedAPI : function() {
+      console.log('Unsupported API');
+    },
+    handleEvent : function(gamepad) {
+      var xAxis = gamepad.axes[0];
+      var yAxis = gamepad.axes[1];
+      ui.updateUI(xAxis, yAxis);
+      updateSerial(xAxis, yAxis);
+    }
+  });
 
   chrome.app.window.onClosed.addListener(function() {
     gamepad.stopPolling();
