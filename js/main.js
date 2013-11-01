@@ -1,33 +1,44 @@
 window.onload = function() {
 
-  var values = [-1,0,1];
-  var updateSerial = function(xAxis, yAxis) {
-    var msg = 0;
+  // compute the gamepad data and send serial messages
+  var updateSerial = function(gamepad) {
+    // speed command
+    // translate speed data from y axis of the second stick from [-1,1] to [30,39]
+    var speed = Math.abs(9 - Math.floor((gamepad.axes[3] + 1) *9 / 2)) + 30;
+    console.log("Speed: " + speed);
+    serial.send(speed);
+
+    // direction command
+    var xAxis = gamepad.axes[0];
+    var yAxis = gamepad.axes[1];
+    var values = [-1,0,1];
+    var cmd = 0;
+    // only send "direction" messages when x/y axis of the first stick is -1, 0 or 1
     if (values.indexOf(xAxis) > -1 && values.indexOf(yAxis) > -1) {
       switch (xAxis) {
         case -1:
-          msg += 0;
+          cmd += 0;
           break;
         case 0:
-          msg += 10;
+          cmd += 10;
           break;
         case 1:
-          msg += 20;
+          cmd += 20;
           break;
       }
       switch (yAxis) {
         case -1:
-          msg += 0;
+          cmd += 0;
           break;
         case 0:
-          msg += 1;
+          cmd += 1;
           break;
         case 1:
-          msg += 2;
+          cmd += 2;
           break;
       }
-      console.log(msg);
-      serial.send(msg);
+      console.log("Command: " + cmd);
+      serial.send(cmd);
     }
   };
 
@@ -38,10 +49,8 @@ window.onload = function() {
       console.log('Unsupported API');
     },
     handleEvent : function(gamepad) {
-      var xAxis = gamepad.axes[0];
-      var yAxis = gamepad.axes[1];
-      ui.updateUI(xAxis, yAxis);
-      updateSerial(xAxis, yAxis);
+      ui.updateUI(gamepad);
+      updateSerial(gamepad);
     }
   });
 

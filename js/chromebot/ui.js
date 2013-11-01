@@ -35,11 +35,10 @@
   };
 
   /*
-   * Update the ui given the new computed x/y axis
-   * @param {Number} xAxis - x-axis of the first joystick (between -1 and 1)
-   * @param {Number} yAxis - y-axis of the first joystick (between -1 and 1)
+   * Update the ui given the new computed x/y axis of the first stick of the gamepad
+   * @param {Object} gamepad - gamepad data
    */
-  UI.prototype.updateUI = function(xAxis, yAxis) {
+  UI.prototype.updateUI = function(gamepad) {
     // internal utility to map -1/1 values to the given range
     var map = function(value, min, max) {
       var srcMax = 2,
@@ -47,6 +46,9 @@
         adjValue = value + 1;
       return (adjValue * dstMax / srcMax) + min;
     };
+    // relevant values to update the UI
+    var xAxis = gamepad.axes[0];
+    var yAxis = gamepad.axes[1];
     // first update is launched when a button of the joystick is pressed
     // so tell the user the joystick is connected
     if (!this.started) {
